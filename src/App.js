@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const XDictionary = () => {
   const [input, setInput] = useState("");
-  const [definition, setDefinition] = useState(""); // Make sure it's initially an empty string
+  const [definition, setDefinition] = useState("");
+
+  useEffect(() => {
+    // Set the initial state after the component mounts
+    setDefinition("");
+  }, []); // Empty dependency array ensures this effect runs once on mount
 
   const dictionary = [
     {
@@ -57,8 +62,7 @@ const XDictionary = () => {
       </button>
       <h2>Definition:</h2>
 
-      {/* Ensure definition is not empty before rendering */}
-      {definition !== "" && (
+      {definition && (
         <>
           <p>{definition}</p>
         </>
