@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const XDictionary = () => {
   const [input, setInput] = useState("");
-  const [definition, setDefinition] = useState("");
+  const [definition, setDefinition] = useState(""); // Make sure it's initially an empty string
 
   const dictionary = [
     {
@@ -57,7 +57,8 @@ const XDictionary = () => {
       </button>
       <h2>Definition:</h2>
 
-      {definition && (
+      {/* Ensure definition is not empty before rendering */}
+      {definition !== "" && (
         <>
           <p>{definition}</p>
         </>
