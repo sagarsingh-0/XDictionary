@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const XDictionary = () => {
+  // State initialization
   const [input, setInput] = useState("");
   const [definition, setDefinition] = useState("");
 
-  useEffect(() => {
-    // Set the initial state after the component mounts
-    setDefinition("");
-  }, []); // Empty dependency array ensures this effect runs once on mount
-
+  // Dictionary data
   const dictionary = [
     {
       word: "React",
@@ -18,6 +15,7 @@ const XDictionary = () => {
     { word: "State", meaning: "An object that stores data for a component." },
   ];
 
+  // Function to search for a word
   const searchWord = () => {
     const foundWord = dictionary.find(
       (item) => item.word.toLowerCase() === input.toLowerCase()
@@ -30,9 +28,14 @@ const XDictionary = () => {
     }
   };
 
+  // Initial render
+  // Use a default definition for the initial render
+  // and update it when necessary
+  const initialDefinition = definition || "Enter a word to search...";
   return (
     <div>
       <h1>XDictionary</h1>
+      {/* Input field */}
       <input
         type="text"
         value={input}
@@ -46,6 +49,7 @@ const XDictionary = () => {
           gap: "10px",
         }}
       />
+      {/* Search button */}
       <button
         onClick={searchWord}
         style={{
@@ -60,13 +64,9 @@ const XDictionary = () => {
       >
         Search
       </button>
+      {/* Definition display */}
       <h2>Definition:</h2>
-
-      {definition && (
-        <>
-          <p>{definition}</p>
-        </>
-      )}
+      <p>{initialDefinition}</p>
     </div>
   );
 };
